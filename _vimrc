@@ -28,6 +28,8 @@ Plugin 'tpope/vim-leiningen'
 Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'airblade/vim-gitgutter'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -61,7 +63,7 @@ set visualbell
 set autoread
 set backspace=indent,eol,start
 set showcmd
-let g:solarized_termtrans=1
+" let g:solarized_termtrans=1
 
 set ts=2 sw=2 et
 let g:indent_guides_start_level=2
@@ -72,7 +74,7 @@ autocmd VimEnter * IndentGuidesEnable
 set laststatus=2
 
 set wildignore=.git,*.swp,*/tmp/*
-colorscheme solarized
+colorscheme jellybeans
 set background=dark
 let g:airline_powerline_fonts=1
 
@@ -89,12 +91,6 @@ let g:OmniSharp_timeout = 1
 "when the first match contains parentheses.
 set noshowmatch
 
-"Super tab settings - uncomment the next 4 lines
-"let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
-"let g:SuperTabClosePreviewOnPopupClose = 1
-
 "don't autoselect first item in omnicomplete, show if only one item (for preview)
 "remove preview if you don't want to see any documentation whatsoever.
 set completeopt=longest,menuone,preview
@@ -110,6 +106,8 @@ set splitbelow
 
 " Get Code Issues and syntax errors
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+
+let mapleader=" "
 
 augroup omnisharp_commands
     autocmd!
@@ -149,6 +147,11 @@ augroup omnisharp_commands
     "navigate down by method/property/field
     autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
 
+    "Super tab settings - uncomment the next 4 lines
+    autocmd FileType cs let g:SuperTabDefaultCompletionType = 'context'
+    autocmd FileType cs let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+    autocmd FileType cs let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+    autocmd FileType cs let g:SuperTabClosePreviewOnPopupClose = 1
 augroup END
 
 
