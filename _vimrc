@@ -78,6 +78,18 @@ colorscheme jellybeans
 set background=dark
 let g:airline_powerline_fonts=1
 
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==
+inoremap <C-k> <Esc>:m .-2<CR>==
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+
 "This is the default value, setting it isn't actually necessary
 let g:OmniSharp_host = "http://localhost:2000"
 
@@ -108,6 +120,8 @@ set splitbelow
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 
 let mapleader=" "
+
+set ttyfast
 
 augroup omnisharp_commands
     autocmd!
@@ -183,6 +197,7 @@ nnoremap <leader>sp :OmniSharpStopServer<cr>
 
 " Add syntax highlighting for types and interfaces
 nnoremap <leader>th :OmniSharpHighlightTypes<cr>
+
 "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
 set hidden
 set guioptions-=T
@@ -201,7 +216,12 @@ au GuiEnter * set guicursor+=i:cursor-block
 set langmenu=none
 winsize 999 999
 
-au BufReadPost *.md setlocal spell spelllang=pl
-au BufReadPost *.md set wrap
+augroup markdown
+  au BufNewFile,BufReadPost *.md set filetype=markdown
+  let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'haml', 'cs']
+  au BufReadPost *.md setlocal spell spelllang=pl
+  au BufReadPost *.md set wrap
+augroup END
+
 au BufReadPost *.cs set ts=4 sw=4 et
 au BufReadPost *.cs let g:indent_guides_start_level=2
