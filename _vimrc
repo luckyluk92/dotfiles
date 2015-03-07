@@ -2,8 +2,8 @@ set nocompatible
 filetype off
 syntax on
 
-set rtp+=~/vimfiles/bundle/Vundle.vim/
-let path='~/vimfiles/bundle'
+set rtp+=~/../../vimfiles/bundle/Vundle.vim/
+let path='~/../../vimfiles/bundle'
 
 call vundle#begin(path)
 
@@ -12,7 +12,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'nosami/Omnisharp'
+" Plugin 'nosami/Omnisharp'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
@@ -75,7 +75,7 @@ autocmd VimEnter * IndentGuidesEnable
 set laststatus=2
 
 set wildignore=.git,*.swp,*/tmp/*
-colorscheme jellybeans
+colorscheme solarized
 set background=dark
 let g:airline_powerline_fonts=1
 
