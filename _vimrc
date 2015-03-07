@@ -29,6 +29,7 @@ Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 
