@@ -20,7 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-obsession'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'nanotech/jellybeans.vim'
+" Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-scripts/tComment'
 Plugin 'vim-ruby/vim-ruby'
 " Plugin 'ecomba/vim-ruby-refactoring'
@@ -46,8 +46,16 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-leiningen'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Specky' 
- 
+Plugin 'digitaltoad/vim-jade'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'craigemery/vim-autotag'
+Plugin 'mxw/vim-jsx'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -82,8 +90,11 @@ set notimeout
 set timeout
 set ttimeoutlen=10
 set cursorline
+
+set lazyredraw
+
 " Remap leader to ,
-let mapleader = ","
+let mapleader = " "
 " Remap tabs keys
 " tab map doesn't work in most terminals - should work fine in gvim
 nnoremap <C-S-tab> :tabprevious<CR>
@@ -119,7 +130,6 @@ if &term =~ '^screen'
 endif
  
 " Plugins
- 
  
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -162,4 +172,40 @@ let g:airline_powerline_fonts = 1
 let g:flay_on_open=1
 let g:flay_on_save=1
 let g:flay_piet_text="!!"
+
+" Syntastic setup
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_coffee_checkers = ['coffeelint']
+
+" UltiSnips setup
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+augroup markdown
+  au BufNewFile,BufReadPost *.md set filetype=markdown
+  let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'rb=ruby', 'sass', 'xml', 'html', 'haml', 'cs']
+  au BufReadPost *.md setlocal spell spelllang=en
+  au BufReadPost *.md set wrap linebreak
+augroup END
+
+augroup ruby
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+augroup END
 
