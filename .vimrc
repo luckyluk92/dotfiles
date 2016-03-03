@@ -191,7 +191,7 @@ let g:syntastic_coffee_checkers = ['coffeelint']
 
 let g:javascript_enable_domhtmlcss = 1
 
-set scrolloff = 5
+set scrolloff=5
 
 augroup markdown
   au BufNewFile,BufReadPost *.md set filetype=markdown
