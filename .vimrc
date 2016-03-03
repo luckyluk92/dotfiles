@@ -55,6 +55,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'pangloss/vim-javascript'
+Plugin 'isRuslan/vim-es6'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -187,13 +189,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_coffee_checkers = ['coffeelint']
 
-" UltiSnips setup
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:javascript_enable_domhtmlcss = 1
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+set scrolloff = 5
 
 augroup markdown
   au BufNewFile,BufReadPost *.md set filetype=markdown
