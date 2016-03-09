@@ -58,6 +58,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'pangloss/vim-javascript'
 Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/goyo.vim'
+Plugin 'beloglazov/vim-online-thesaurus'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -197,8 +198,10 @@ set scrolloff=5
 augroup markdown
   au BufNewFile,BufReadPost *.md set filetype=markdown
   let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'rb=ruby', 'sass', 'xml', 'html', 'haml', 'cs']
-  au BufReadPost *.md setlocal spell spelllang=en
-  au BufReadPost *.md set wrap linebreak
+  setlocal spell spelllang=en
+  set wrap linebreak
+  let g:online_thesaurus_map_keys = 0
+  au BufReadPost *.md nnoremap <leader>ck :OnlineThesaurusCurrentWord<CR>
 augroup END
 
 augroup ruby
