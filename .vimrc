@@ -59,6 +59,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/goyo.vim'
 Plugin 'beloglazov/vim-online-thesaurus'
+Plugin 'bronson/vim-trailing-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
